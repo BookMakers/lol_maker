@@ -15,33 +15,53 @@ import copy
 
 class Team:
     players = None
-    team = []
+    team = {
+    'TOP':'',
+    'MID':'',
+    'JNG':'',
+    'AD':'',
+    'SUP':'',
+    'FLEX':'',
+    'FLEX':'',
+    'TEAM':''
+    }
+
 
     def __init__(self, val):
         reader = csv.DictReader(val)
         self.players = [row for row in reader]
-                    
     def removeOut(self):
         name = ''
-        while(name != '~'):
-            name = input("Please enter in an absent player: ")
-            self.delEntry('Name', name)
+        remlist = []
+        while(name != '-w'):
+            name = input("Please enter in an absent player or -w to finish and write or -q to quit: ")
+            if(name == '-q'):
+                exit()
+            if(self.delEntry('Name', name)):
+                remlist.append(name)
+                print("added")
             
+        self.rewrite(remlist)
+    def rewrite(self, rem):
+        f = open('roster','r')
+        roster = f.readlines()
+        f.close()
+        f = open('roster','w')
+        for player in roster:
+            bad = False
+            for name in rem:
+                if(name in player):
+                    print("found")
+                    bad = True
+                    rem.pop(rem.index(name))
+            if(not(bad)):
+                f.write(player)
+    
     def delEntry(self, col, item):
         for row in self.players:
             #print(row[col], item)
             if(item in row[col]):
-                print("Found")
-                return
+                del row
+                return True
             
-        """
-        for row in self.players:
-            print(row[col])
-            if(item in row):
-                print("found")
-                try:
-                    print("deleted row " + row)
-                    del row
-                except:
-                    print("Error")
-        """
+        

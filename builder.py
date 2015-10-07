@@ -24,7 +24,9 @@ def main():
         clean()
     val = grabCsv()
     t = Team(val)
-    t.removeOut()
+    
+    if('-r' in sys.argv):
+        t.removeOut()
     
 
 
