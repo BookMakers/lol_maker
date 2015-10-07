@@ -18,7 +18,7 @@ class Team:
     def delEntry(self, col, item):
         for row in self.players:
             #print(row[col], item)
-            if(str(row[col]) == item):
+            if(item in row[col]):
                 print("Found")
                 return
             
