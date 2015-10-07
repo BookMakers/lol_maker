@@ -1,3 +1,15 @@
+"""
+Team Compo:
+TOP
+MID
+JNG
+AD
+SUP
+FLEX
+FLEX
+TEAM 
+"""
+
 import csv
 import copy
 
