@@ -1,23 +1,35 @@
 import csv
+import copy
 
 class Team:
     players = None
+    team = []
 
     def __init__(self, val):
-        self.players = csv.DictReader(val)
-
-        
-            
+        reader = csv.DictReader(val)
+        self.players = [row for row in reader]
+                    
     def removeOut(self):
         name = ''
         while(name != '~'):
             name = input("Please enter in an absent player: ")
-            delEntry(self, 'Name', name)
+            self.delEntry('Name', name)
             
     def delEntry(self, col, item):
         for row in self.players:
-            if(row[col] == item):
+            #print(row[col], item)
+            if(str(row[col]) == item):
+                print("Found")
+                return
+            
+        """
+        for row in self.players:
+            print(row[col])
+            if(item in row):
+                print("found")
                 try:
-                    del self.players[com]
+                    print("deleted row " + row)
+                    del row
                 except:
-                    print("Not in list")
+                    print("Error")
+        """
