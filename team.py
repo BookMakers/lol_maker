@@ -63,5 +63,6 @@ class Team:
             if(item in row[col]):
                 del row
                 return True
-            
+    def build(self, budget):
+        pass
         
