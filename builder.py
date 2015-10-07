@@ -1,28 +1,19 @@
-import csv
-import urllib
-players = None
+import requests
+from team import Team
+
+
+url = "https://www.draftkings.com/lineup/getavailableplayerscsv?contestTypeId=26&draftGroupId=7387"
 
 def grabCsv():
-    pass
+    page = requests.get(url)
+    return page.text
 
-def loadCsv():
-    global players
-    with open('DKSalaries.csv') as csvfile:
-        players = csv.DictReader(csvfile)
-        
-        
-def removeOut():
-    pass
-
-def makeTeam():
-    global players
     
 
 def main():
-    grabCsv()
-    loadCsv()
-    removeOut()
-    makeTeam()
+    val = grabCsv()
+    t = Team(val)
+    t.removeOut()
     
 
 
