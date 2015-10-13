@@ -12,20 +12,12 @@ TEAM
 
 import csv
 import copy
+import strategy
+
 
 class Team:
     players = None
-    team = {
-    'TOP':'',
-    'MID':'',
-    'JNG':'',
-    'AD':'',
-    'SUP':'',
-    'FLEX':'',
-    'FLEX':'',
-    'TEAM':''
-    }
-
+    
 
     def __init__(self, val):
         reader = csv.DictReader(val)
@@ -64,5 +56,6 @@ class Team:
                 del row
                 return True
     def build(self, budget):
-        pass
+        return(strategy.default(budget,self.players))
+        
         
