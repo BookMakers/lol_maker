@@ -22,6 +22,7 @@ class Team:
     def __init__(self, val):
         reader = csv.DictReader(val)
         self.players = [row for row in reader]
+        
     def removeOut(self):
         name = ''
         remlist = []

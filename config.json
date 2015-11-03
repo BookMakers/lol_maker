@@ -1,4 +1,5 @@
 {
   "csv_url":"https://www.draftkings.com/lineup/getavailableplayerscsv?contestTypeId=26&draftGroupId=7387",
-  "budget":"5000"
+  "budget":"5000",
+  "filename":"roster"
 }

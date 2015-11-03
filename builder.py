@@ -20,13 +20,14 @@ def load():
     
     
 def grabCsv():
+    global config
     try:
-        return open("roster", "r")
+        return open(config["filename"], "r")
     except:
         page = requests.get(url)
         roster = open("roster", "w")
         roster.write(page.text)
-        roster.close
+        roster.close()
         return open("roster", "r")
 def clean():
     os.remove('roster')

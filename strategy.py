@@ -27,7 +27,8 @@ def default(budget,players):
 
     for player in team.items():
         print(player)
-        print
+        
+    return team
 def addTop(player):
     global team
     if(player['Salary']>team['TOP']['Salary']):
